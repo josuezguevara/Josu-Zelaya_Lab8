@@ -390,37 +390,44 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
 
         boton_battle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         boton_battle.setText("BATTLE!");
+        boton_battle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_battleMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_simulacionLayout = new javax.swing.GroupLayout(jd_simulacion.getContentPane());
         jd_simulacion.getContentPane().setLayout(jd_simulacionLayout);
         jd_simulacionLayout.setHorizontalGroup(
             jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_simulacionLayout.createSequentialGroup()
-                .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jd_simulacionLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15)
-                            .addGroup(jd_simulacionLayout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                                .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jd_simulacionLayout.createSequentialGroup()
-                                .addComponent(jLabel17)
-                                .addGap(18, 18, 18)
-                                .addComponent(cb_hada1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)
-                                .addComponent(jLabel18)
-                                .addGap(28, 28, 28)
-                                .addComponent(cb_hada2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jd_simulacionLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(60, 60, 60))
             .addGroup(jd_simulacionLayout.createSequentialGroup()
-                .addGap(181, 181, 181)
+                .addGap(30, 30, 30)
+                .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_simulacionLayout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_simulacionLayout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_simulacionLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addComponent(jLabel17)
+                        .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_simulacionLayout.createSequentialGroup()
+                                .addGap(214, 214, 214)
+                                .addComponent(jLabel18)
+                                .addGap(34, 34, 34)
+                                .addComponent(cb_hada2, 0, 126, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_simulacionLayout.createSequentialGroup()
+                                .addComponent(cb_hada1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(271, 271, 271)))))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_simulacionLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(boton_battle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(212, 212, 212))
         );
         jd_simulacionLayout.setVerticalGroup(
             jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -431,9 +438,9 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
                     .addComponent(jLabel18)
                     .addComponent(cb_hada1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cb_hada2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(42, 42, 42)
                 .addComponent(boton_battle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -771,6 +778,14 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
         this.jd_simulacion.setVisible(true);
     }//GEN-LAST:event_menu_simulacionActionPerformed
 
+    private void boton_battleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_battleMouseClicked
+        // TODO add your handling code here
+        
+        p1.run();
+        p2.run();
+        
+    }//GEN-LAST:event_boton_battleMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -872,4 +887,6 @@ ArrayList<Lamias> lamias = new ArrayList();
     String nombre;
     double altura, edad, poder, salud;
     File Archivo;
+    Hilo p1;
+    Hilo p2;
 }
