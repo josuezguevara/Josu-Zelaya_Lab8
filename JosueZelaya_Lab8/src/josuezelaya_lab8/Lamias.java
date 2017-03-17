@@ -5,6 +5,8 @@
  */
 package josuezelaya_lab8;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author usuario
@@ -20,8 +22,16 @@ public class Lamias extends Hadas{
 
     public Lamias(double aleta, double num_branquias, String Nombre, double altura, double edad, double salud, double poder) {
         super(Nombre, altura, edad, salud, poder);
+        if (aleta<=5){
         this.aleta = aleta;
+        }else{
+            JOptionPane.showMessageDialog(null, "No mayor a 5");
+        }
+        if (num_branquias<=8){
         this.num_branquias = num_branquias;
+        }else{
+            JOptionPane.showMessageDialog(null, "No mas de 8");
+        }
     }
 
     public double getAleta() {

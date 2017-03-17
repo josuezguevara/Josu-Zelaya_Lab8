@@ -18,7 +18,7 @@ public class Hamadriades extends Hadas{
 
     public Hamadriades(double salud_extra, String Nombre, double altura, double edad, double salud, double poder) {
         super(Nombre, altura, edad, salud, poder);
-        this.salud_extra = salud_extra;
+        this.salud_extra = 173.0;
     }
 
     public double getSalud_extra() {
@@ -26,7 +26,7 @@ public class Hamadriades extends Hadas{
     }
 
     public void setSalud_extra(double salud_extra) {
-        this.salud_extra = 173.0;
+        this.salud_extra =salud_extra;
     }
     
     

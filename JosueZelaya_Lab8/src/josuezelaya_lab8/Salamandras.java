@@ -5,6 +5,8 @@
  */
 package josuezelaya_lab8;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author usuario
@@ -17,7 +19,11 @@ private double alas;
 
     public Salamandras(double alas, String Nombre, double altura, double edad, double salud, double poder) {
         super(Nombre, altura, edad, salud, poder);
+        if (alas>=16){
         this.alas = alas;
+        }else{
+            JOptionPane.showMessageDialog(null, "No menor de 16");
+        }
     }
 
     public double getAlas() {

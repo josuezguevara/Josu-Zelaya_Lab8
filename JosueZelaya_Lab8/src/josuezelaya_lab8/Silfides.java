@@ -5,6 +5,8 @@
  */
 package josuezelaya_lab8;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author usuario
@@ -18,7 +20,11 @@ private double alas;
 
     public Silfides(double alas, String Nombre, double altura, double edad, double salud, double poder) {
         super(Nombre, altura, edad, salud, poder);
+        if (alas>=6){
         this.alas = alas;
+        }else{
+            JOptionPane.showMessageDialog(null, "NO menor a 6");
+        }
     }
 
     public double getAlas() {
