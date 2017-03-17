@@ -6,10 +6,14 @@
 package josuezelaya_lab8;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -67,14 +71,25 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         salud_salamandras = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cb_tipo_hada = new javax.swing.JComboBox<>();
         boton_agregar = new javax.swing.JButton();
         jd_about = new javax.swing.JDialog();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jd_simulacion = new javax.swing.JDialog();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jProgressBar2 = new javax.swing.JProgressBar();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        cb_hada1 = new javax.swing.JComboBox<>();
+        cb_hada2 = new javax.swing.JComboBox<>();
+        boton_battle = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menu_agregar = new javax.swing.JMenuItem();
+        menu_simulacion = new javax.swing.JMenuItem();
         menu_abrir = new javax.swing.JMenuItem();
         menu_guardar = new javax.swing.JMenuItem();
         menu_guardarcomo = new javax.swing.JMenuItem();
@@ -107,21 +122,20 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(sp_num_branquias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addGap(55, 55, 55)
-                            .addComponent(sp_aleta_lamia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(37, 37, 37)
+                        .addComponent(sp_num_branquias))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(55, 55, 55)
+                        .addComponent(sp_aleta_lamia, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(113, 113, 113)
                         .addComponent(salud_lamias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,16 +198,16 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sp_alas_silfides, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addComponent(sp_alas_silfides, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addGap(64, 64, 64)
                         .addComponent(salud_silfides, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addGap(205, 205, 205))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,10 +242,10 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(jLabel14))
                 .addGap(97, 97, 97)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sp_alas_salamandras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(sp_alas_salamandras, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(salud_salamandras, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,18 +254,18 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(sp_alas_salamandras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(55, 55, 55)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(salud_salamandras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Salamandras", jPanel4);
 
         jLabel10.setText("Seleccione Tipo de Hada:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lamias", "Hamadriades", "Silfides", "Salamandras" }));
+        cb_tipo_hada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lamias", "Hamadriades", "Silfides", "Salamandras" }));
 
         boton_agregar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         boton_agregar.setText("Agregar");
@@ -271,18 +285,18 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
                         .addGap(73, 73, 73)
                         .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jd_agregarLayout.createSequentialGroup()
-                                .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sp_poder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sp_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sp_altura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(129, 129, 129)
+                                .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(sp_altura, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                                    .addComponent(sp_edad)
+                                    .addComponent(sp_poder))
+                                .addGap(102, 102, 102)
                                 .addComponent(jTabbedPane1))
                             .addGroup(jd_agregarLayout.createSequentialGroup()
                                 .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(38, 38, 38)
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cb_tipo_hada, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(22, 22, 22))))
                     .addGroup(jd_agregarLayout.createSequentialGroup()
                         .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,7 +324,7 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
                 .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_tipo_hada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_agregarLayout.createSequentialGroup()
@@ -357,6 +371,79 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
                 .addContainerGap(123, Short.MAX_VALUE))
         );
 
+        jd_simulacion.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                jd_simulacionWindowActivated(evt);
+            }
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                jd_simulacionWindowClosed(evt);
+            }
+        });
+
+        jLabel15.setText("Hada 1");
+
+        jLabel16.setText("Hada 2");
+
+        jLabel17.setText("Hada 1:");
+
+        jLabel18.setText("Hada 2:");
+
+        boton_battle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        boton_battle.setText("BATTLE!");
+
+        javax.swing.GroupLayout jd_simulacionLayout = new javax.swing.GroupLayout(jd_simulacion.getContentPane());
+        jd_simulacion.getContentPane().setLayout(jd_simulacionLayout);
+        jd_simulacionLayout.setHorizontalGroup(
+            jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_simulacionLayout.createSequentialGroup()
+                .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jd_simulacionLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addGroup(jd_simulacionLayout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                                .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jd_simulacionLayout.createSequentialGroup()
+                                .addComponent(jLabel17)
+                                .addGap(18, 18, 18)
+                                .addComponent(cb_hada1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(jLabel18)
+                                .addGap(28, 28, 28)
+                                .addComponent(cb_hada2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jd_simulacionLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(60, 60, 60))
+            .addGroup(jd_simulacionLayout.createSequentialGroup()
+                .addGap(181, 181, 181)
+                .addComponent(boton_battle)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_simulacionLayout.setVerticalGroup(
+            jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_simulacionLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel18)
+                    .addComponent(cb_hada1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_hada2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(boton_battle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(45, 45, 45)
+                .addGroup(jd_simulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16)
+                    .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(149, 149, 149))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jMenu1.setText("Opciones");
@@ -369,7 +456,20 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
         });
         jMenu1.add(menu_agregar);
 
+        menu_simulacion.setText("Simulacion");
+        menu_simulacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_simulacionActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_simulacion);
+
         menu_abrir.setText("Abrir");
+        menu_abrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_abrirActionPerformed(evt);
+            }
+        });
         jMenu1.add(menu_abrir);
 
         menu_guardar.setText("Guardar");
@@ -441,14 +541,91 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
     private void boton_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_agregarMouseClicked
         // TODO add your handling code here:
 
+        if (cb_tipo_hada.getSelectedItem().toString().equals("Lamias")) {
+            try {
+                nombre = tf_nombre.getText();
+                altura = Double.parseDouble(sp_altura.getValue().toString());
+                edad = Double.parseDouble(sp_edad.getValue().toString());
+                poder = Double.parseDouble(sp_poder.getValue().toString());
+                double aleta = Double.parseDouble(sp_aleta_lamia.getValue().toString());
+                double branquias = Double.parseDouble(sp_num_branquias.getValue().toString());
+                salud = Double.parseDouble(salud_lamias.getText());
+                if (aleta <= 5 && branquias <= 8) {
+                    lamias.add(new Lamias(aleta, branquias, nombre, altura, edad, salud, poder));
+
+                    JOptionPane.showMessageDialog(this, "Se agrego Lamia exitosamente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No mayor a 5 la aleta");
+                    JOptionPane.showMessageDialog(null, "No mas de 8 la branquias");
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+        if (cb_tipo_hada.getSelectedItem().toString().equals("Hamadriades")) {
+            try {
+                nombre = tf_nombre.getText();
+                altura = Double.parseDouble(sp_altura.getValue().toString());
+                edad = Double.parseDouble(sp_edad.getValue().toString());
+                poder = Double.parseDouble(sp_poder.getValue().toString());
+                salud = Double.parseDouble(salud_hamadriades.getText());
+                hamadriades.add(new Hamadriades(nombre, altura, edad, salud, poder));
+                JOptionPane.showMessageDialog(this, "Agrego Hamadriades");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        if (cb_tipo_hada.getSelectedItem().toString().equals("Silfides")) {
+            try {
+                nombre = tf_nombre.getText();
+                altura = Double.parseDouble(sp_altura.getValue().toString());
+                edad = Double.parseDouble(sp_edad.getValue().toString());
+                poder = Double.parseDouble(sp_poder.getValue().toString());
+                salud = Double.parseDouble(salud_silfides.getText());
+                double alas = Double.parseDouble(sp_alas_silfides.getValue().toString());
+                if (alas >= 6) {
+                    silfides.add(new Silfides(alas, nombre, altura, edad, salud, poder));
+                    JOptionPane.showMessageDialog(this, "Agrego Silfides");
+                } else {
+                    JOptionPane.showMessageDialog(null, "NO menor a 6 longitud de ala");
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        if (cb_tipo_hada.getSelectedItem().toString().equals("Salamandras")) {
+            try {
+                nombre = tf_nombre.getText();
+                altura = Double.parseDouble(sp_altura.getValue().toString());
+                edad = Double.parseDouble(sp_edad.getValue().toString());
+                poder = Double.parseDouble(sp_poder.getValue().toString());
+                salud = Double.parseDouble(salud_salamandras.getText());
+                double alas = Double.parseDouble(sp_alas_salamandras.getValue().toString());
+                if (alas >= 16) {
+                    salamandras.add(new Salamandras(alas, nombre, altura, edad, salud, poder));
+                    JOptionPane.showMessageDialog(this, "Agrego Salamandras");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No menor de 16 longitud de ala");
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
     }//GEN-LAST:event_boton_agregarMouseClicked
 
     private void menu_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_guardarActionPerformed
         File Archivo;
         int cont = 0;
-        String PATH = "";
+        String path = "";
         if (cont > 0) {
-            Archivo = new File(PATH);
+            Archivo = new File(path);
             FileOutputStream fw = null;
             ObjectOutputStream bw = null;
             try {
@@ -477,10 +654,10 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
             }
         } else {
             JFileChooser fcs = new JFileChooser();
-            int zx = fcs.showSaveDialog(this);
-            if (zx == JFileChooser.APPROVE_OPTION) {
+            int aprove = fcs.showSaveDialog(this);
+            if (aprove == JFileChooser.APPROVE_OPTION) {
                 File fs = fcs.getSelectedFile();
-                PATH = fs.getAbsolutePath();
+                path = fs.getAbsolutePath();
                 FileOutputStream fw = null;
                 ObjectOutputStream bw = null;
                 try {
@@ -510,6 +687,89 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_menu_guardarActionPerformed
+
+    private void menu_abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_abrirActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fc = new JFileChooser();
+        int op = fc.showOpenDialog(this);
+        File f = fc.getSelectedFile();
+        try {
+            FileInputStream fis = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            Hadas hada;
+            try {
+                while ((hada = (Hadas) ois.readObject()) != null) {
+                    if (hada instanceof Lamias) {
+                        lamias.add((Lamias) hada);
+                    } else if (hada instanceof Hamadriades) {
+                        hamadriades.add((Hamadriades) hada);
+                    } else if (hada instanceof Silfides) {
+                        silfides.add((Silfides) hada);
+                    } else if (hada instanceof Salamandras) {
+                        salamandras.add((Salamandras) hada);
+                    }
+                }
+                Archivo = f;
+            } catch (Exception ex) {
+            } finally {
+                ois.close();
+                fis.close();
+            }
+        } catch (Exception ex) {
+        }
+    }//GEN-LAST:event_menu_abrirActionPerformed
+
+    private void jd_simulacionWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jd_simulacionWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jd_simulacionWindowClosed
+
+    private void jd_simulacionWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jd_simulacionWindowActivated
+        // TODO add your handling code here:
+        if (jd_simulacion.isActive()) {
+            DefaultComboBoxModel modelo
+                    = new DefaultComboBoxModel();
+            for (Lamias temp : lamias) {
+                modelo.addElement(temp);
+            }
+            for (Hamadriades temp : hamadriades) {
+                modelo.addElement(temp);
+            }
+            for (Silfides temp : silfides) {
+                modelo.addElement(temp);
+            }
+            for (Salamandras temp : salamandras) {
+                modelo.addElement(temp);
+            }
+            cb_hada1.setModel(modelo);
+          
+        }
+         if (jd_simulacion.isActive()) {
+            DefaultComboBoxModel modelo
+                    = new DefaultComboBoxModel();
+            for (Lamias temp : lamias) {
+                modelo.addElement(temp);
+            }
+            for (Hamadriades temp : hamadriades) {
+                modelo.addElement(temp);
+            }
+            for (Silfides temp : silfides) {
+                modelo.addElement(temp);
+            }
+            for (Salamandras temp : salamandras) {
+                modelo.addElement(temp);
+            }
+           
+            cb_hada2.setModel(modelo);
+        }
+    }//GEN-LAST:event_jd_simulacionWindowActivated
+
+    private void menu_simulacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_simulacionActionPerformed
+        // TODO add your handling code here:
+        this.jd_simulacion.setModal(true);
+        this.jd_simulacion.pack();
+        this.jd_simulacion.setLocationRelativeTo(this);
+        this.jd_simulacion.setVisible(true);
+    }//GEN-LAST:event_menu_simulacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -548,13 +808,20 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_agregar;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton boton_battle;
+    private javax.swing.JComboBox<String> cb_hada1;
+    private javax.swing.JComboBox<String> cb_hada2;
+    private javax.swing.JComboBox<String> cb_tipo_hada;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -569,17 +836,21 @@ public class Ventana_Lab8 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JProgressBar jProgressBar2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JDialog jd_about;
     private javax.swing.JDialog jd_agregar;
+    private javax.swing.JDialog jd_simulacion;
     private javax.swing.JMenuItem menu_about;
     private javax.swing.JMenuItem menu_abrir;
     private javax.swing.JMenuItem menu_agregar;
     private javax.swing.JMenuItem menu_guardar;
     private javax.swing.JMenuItem menu_guardarcomo;
     private javax.swing.JMenuItem menu_salir;
+    private javax.swing.JMenuItem menu_simulacion;
     private javax.swing.JTextField salud_hamadriades;
     private javax.swing.JTextField salud_lamias;
     private javax.swing.JTextField salud_salamandras;
@@ -597,5 +868,8 @@ ArrayList<Lamias> lamias = new ArrayList();
     ArrayList<Hamadriades> hamadriades = new ArrayList();
     ArrayList<Silfides> silfides = new ArrayList();
     ArrayList<Salamandras> salamandras = new ArrayList();
-
+    ArrayList hadas = new ArrayList();
+    String nombre;
+    double altura, edad, poder, salud;
+    File Archivo;
 }

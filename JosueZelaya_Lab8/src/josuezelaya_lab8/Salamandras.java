@@ -36,6 +36,12 @@ private double alas;
     }
 
     @Override
+    public String toString() {
+        return super.getNombre();
+    }
+
+    
+    @Override
     public void Ataque(Hadas hada) {
      double salud=hada.getSalud()-71.0;
      hada.setSalud(salud);
